@@ -23,7 +23,7 @@ defmodule AtAt.Request do
 				[method, path, version] = line |> String.split
 				_parse(rest, %{method: method |> to_sym, path: path, version: version})
 
-			line =~ ~r/^[^:]+\s?(.*)$/ -> 
+			line =~ ~r/^[^:]+:\s?(.*)$/ -> 
 				headers = _parse_header(line) |> _merge_results result[:headers]
 				_parse(rest, _merge_results(:headers, headers, result))
 

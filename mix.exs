@@ -5,7 +5,8 @@ defmodule AtAt.Mixfile do
     [app: :at_at,
      version: "0.0.1",
      elixir: "~> 0.15.1",
-     deps: deps]
+     deps: deps,
+     escript: escript]
   end
 
   # Configuration for the OTP application
@@ -27,4 +28,8 @@ defmodule AtAt.Mixfile do
   defp deps do
     []
   end
+
+  defp escript do
+    [ main_module: AtAt.Cli ]
+  end  
 end

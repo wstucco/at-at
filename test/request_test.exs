@@ -1,8 +1,6 @@
 defmodule RequestTest do
   use ExUnit.Case
 
-  alias AtAt.Request
-
   test "invalid requests are rejected" do
 	  invalid_req = """
 		GET  /blog/2014/02/12/pattern-matching-and-parsing/ HTTP/1.1
@@ -13,7 +11,10 @@ defmodule RequestTest do
 		body line #2  
 	  """
 
-  	assert AtAt.Request.parse(invalid_req) == %{error: "invalid request"}
+	  invalid_req_2 = invalid_req |> String.replace("GET", "GOT")
+
+  	assert AtAt.Request.parse(invalid_req)   == %{error: "invalid request"}
+  	assert AtAt.Request.parse(invalid_req_2) == %{error: "invalid request"}
 	end
 
   test "requests methods are accorectly recognized" do
