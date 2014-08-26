@@ -11,6 +11,7 @@ import (
 
 const (
 	StartingPort = 16000
+	DotFolder    = ".at-at"
 )
 
 var currentPort = StartingPort
@@ -23,7 +24,7 @@ func Run() {
 }
 
 func scan(folder string) HostList {
-	root := path.Join(folder, ".kapow")
+	root := path.Join(folder, DotFolder)
 	files, error := ioutil.ReadDir(root)
 	links := make(HostList, 0)
 
